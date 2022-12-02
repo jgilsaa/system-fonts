@@ -1,4 +1,10 @@
 {
+    'xcode_settings': {
+        'CLANG_CXX_LANGUAGE_STANDARD': 'c++17'
+    },
+    "variables": {
+        "openssl_fips" : "0" 
+    },
     "targets": [
         {
             "target_name": "system-fonts",
