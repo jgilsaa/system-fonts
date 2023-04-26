@@ -190,12 +190,13 @@ ResultSet *getAvailableFonts() {
 
     for (int j = 0; j < fontCount; j++) {
       IDWriteFont *font = NULL;
-      HR(family->GetFont(j, &font));
+      if (family->GetFont(j, &font) >= 0) {
 
-      FontDescriptor *result = resultFromFont(font);
-      if (psNames.count(result->postscriptName) == 0) {
-        res->push_back(resultFromFont(font));
-        psNames.insert(result->postscriptName);
+        FontDescriptor *result = resultFromFont(font);
+        if (psNames.count(result->postscriptName) == 0) {
+          res->push_back(resultFromFont(font));
+          psNames.insert(result->postscriptName);
+        }
       }
     }
 
